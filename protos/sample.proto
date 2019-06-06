@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package protos;
+
+import "google/api/annotations.proto";
+
+message Person {
+    string id = 1;
+    string name = 2;
+    string address = 3;
+    string username = 4;
+    string password = 5;
+}
+
+message ListPersonRequest {}
+message ListPersonResponse {repeated Person person = 1;}
+
+service PersonService {
+    rpc ListPeople (ListPersonRequest) returns (ListPersonResponse) {
+        option (google.api.http) = {
+          post: "/v1/people.list"
+          body: "*"
+        };
+    }
+}

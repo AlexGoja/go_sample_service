@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "sample.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/people.list": {
+      "post": {
+        "operationId": "ListPeople",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/protosListPersonResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protosListPersonRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PersonService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protosListPersonRequest": {
+      "type": "object"
+    },
+    "protosListPersonResponse": {
+      "type": "object",
+      "properties": {
+        "person": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protosPerson"
+          }
+        }
+      }
+    },
+    "protosPerson": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
